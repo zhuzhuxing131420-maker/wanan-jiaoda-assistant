@@ -1,0 +1,10 @@
+/.gradle/
+/local.properties
+**/build/
+/.idea/
+*.iml
+.DS_Store
+
+# Keep the app data package visible despite the parent repository's data/ ignore rule.
+!/app/src/main/java/com/wananjiaoda/assistant/data/
+!/app/src/main/java/com/wananjiaoda/assistant/data/**

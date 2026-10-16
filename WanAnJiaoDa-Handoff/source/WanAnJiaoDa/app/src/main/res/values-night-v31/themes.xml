@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.WanAnJiaoDa" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:colorAccent">#66CCFF</item>
+        <item name="android:colorControlActivated">#66CCFF</item>
+        <item name="android:windowSplashScreenBackground">#10191F</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/tianyi_chibi</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#16445A</item>
+        <item name="android:statusBarColor">#10191F</item>
+        <item name="android:navigationBarColor">#17232B</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

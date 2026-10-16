@@ -1,0 +1,50 @@
+# Local tooling and research caches
+/.firecrawl/
+/.codex_tmp/
+/.codex-artifacts/
+/.worktrees/
+/.superpowers/
+/backups/
+/migration-output/
+
+# Android generated output and machine-specific configuration
+**/.gradle/
+**/build/
+**/.idea/
+**/local.properties
+*.iml
+*.apk
+*.aab
+*.apks
+*.idsig
+
+# Secrets and private runtime data (never ignore the source data package)
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+**/credentials.json
+**/secrets.json
+*.db
+*.db-shm
+*.db-wal
+*.log
+/diagnostics/
+/captures/
+
+# Existing local device records; preserve originals on this machine.
+# Publish only separately reviewed, sanitized documentation.
+/本机开发说明.md
+/docs/superpowers/plans/2026-10-10-scheduling-evidence.md
+/docs/superpowers/plans/2026-10-11-single-scene-checkin.md
+/docs/superpowers/plans/2026-10-11-wechat-navigation.md
+/docs/superpowers/specs/2026-10-16-git-github-management-design.md
+/docs/superpowers/plans/2026-10-16-git-github-management.md
+
+Thumbs.db
+.DS_Store

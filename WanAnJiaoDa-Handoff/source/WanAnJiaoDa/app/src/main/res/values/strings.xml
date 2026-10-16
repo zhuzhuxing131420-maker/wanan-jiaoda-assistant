@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">晚安交大助手</string>
+    <string name="accessibility_service_name">晚安交大助手权限服务</string>
+    <string name="accessibility_service_description">手动开启普通微信观察后，读取有限的事件、节点和画面文字，两分钟后停止。“自动进入微信并测试签到”会按页面文字选择完整名称“晚安交大地学人”，进入签到页并验证；导航限时90秒。“单次测试晚安交大签到”需手动进入目标页。两种测试在开放时段最多提交一次，随后核对当天记录，签到验证限时90秒；当天已打卡则跳过。调试记录保存在本机，截图仅在内存处理。定时完整执行尚未接入。</string>
+</resources>

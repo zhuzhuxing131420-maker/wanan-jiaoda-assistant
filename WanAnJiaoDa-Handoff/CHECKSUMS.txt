@@ -1,0 +1,7 @@
+APK: apk/WanAnJiaoDa-debug.apk
+SHA-256: 43424143aa208f1f5323a0fba112cacb938b3a9bc05cb9a6f0cdc2998b6bc1d9
+Size: 34144958 bytes
+minSdk: 29
+targetSdk: 35
+versionName: 0.1.0
+versionCode: 1
