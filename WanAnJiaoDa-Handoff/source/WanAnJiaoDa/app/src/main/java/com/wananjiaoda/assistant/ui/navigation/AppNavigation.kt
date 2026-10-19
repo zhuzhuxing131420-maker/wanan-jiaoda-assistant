@@ -106,6 +106,7 @@ fun AppNavigation(modifier: Modifier = Modifier) {
                     onTestTask = vm::triggerTestTask,
                     onPermissionGuide = { navController.navigate(AppDestination.PERMISSIONS.route) },
                     accessibilityEnabled = permissions?.accessibilityEnabled,
+                    accessibilityConnected = permissions?.accessibilityConnected == true,
                     onAccessibilityTest = { navController.navigate(AppDestination.ACCESSIBILITY_TEST.route) },
                     onWeChatObserver = { navController.navigate(AppDestination.WECHAT_OBSERVER.route) })
             }

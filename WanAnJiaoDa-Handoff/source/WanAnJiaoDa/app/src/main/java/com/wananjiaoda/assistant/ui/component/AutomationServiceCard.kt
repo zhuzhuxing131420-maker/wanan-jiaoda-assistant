@@ -8,18 +8,15 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.wananjiaoda.assistant.permission.accessibilityStatusText
 
 @Composable
-fun AutomationServiceCard(accessibilityEnabled: Boolean?, onTest: () -> Unit, onWeChatObserver: () -> Unit) {
+fun AutomationServiceCard(accessibilityEnabled: Boolean?, accessibilityConnected: Boolean, onTest: () -> Unit, onWeChatObserver: () -> Unit) {
     SettingCard("自动化服务") {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("无障碍状态", style = MaterialTheme.typography.bodyMedium)
             Text(
-                when (accessibilityEnabled) {
-                    true -> "✓ 已开启"
-                    false -> "× 未开启"
-                    null -> "检查中"
-                },
+                accessibilityStatusText(accessibilityEnabled, accessibilityConnected),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.secondary,
             )

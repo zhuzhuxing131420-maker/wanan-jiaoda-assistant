@@ -6,6 +6,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.wananjiaoda.assistant.data.local.AppPreferencesDataStore
+import com.wananjiaoda.assistant.service.AccessibilityEventLogger
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -26,6 +29,14 @@ class PermissionViewModel(application: Application) : AndroidViewModel(applicati
 
     private val _permissionState = MutableStateFlow<PermissionState?>(null)
     val permissionState: StateFlow<PermissionState?> = _permissionState.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            AccessibilityEventLogger.connected.collect { connected ->
+                _permissionState.update { it?.withAccessibilityConnection(connected) }
+            }
+        }
+    }
 
     fun refresh() {
         _permissionState.value = checker.check()

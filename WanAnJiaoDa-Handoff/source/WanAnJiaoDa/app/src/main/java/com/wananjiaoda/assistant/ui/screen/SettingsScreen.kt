@@ -43,6 +43,7 @@ fun SettingsScreen(
     onTestTask: () -> Unit,
     onPermissionGuide: () -> Unit,
     accessibilityEnabled: Boolean?,
+    accessibilityConnected: Boolean,
     onAccessibilityTest: () -> Unit,
     onWeChatObserver: () -> Unit,
 ) {
@@ -97,7 +98,7 @@ fun SettingsScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
             OutlinedButton(onClick = onPermissionGuide) { Text("打开配置检查") }
         }
-        AutomationServiceCard(accessibilityEnabled, onAccessibilityTest, onWeChatObserver)
+        AutomationServiceCard(accessibilityEnabled, accessibilityConnected, onAccessibilityTest, onWeChatObserver)
     }
 }
 

@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.wananjiaoda.assistant.permission.accessibilityStatusText
 import com.wananjiaoda.assistant.service.AccessibilityEventLog
 import java.time.Instant
 import java.time.ZoneId
@@ -38,16 +39,11 @@ fun AccessibilityTestScreen(
             Text("无障碍事件测试", style = MaterialTheme.typography.headlineSmall)
         }
         Text(
-            when {
-                accessibilityEnabled == null -> "正在检查服务状态"
-                !accessibilityEnabled -> "无障碍服务未开启"
-                serviceConnected -> "服务已连接，正在接收事件"
-                else -> "已授权，等待服务连接"
-            },
+            accessibilityStatusText(accessibilityEnabled, serviceConnected),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        if (accessibilityEnabled == false) {
+        if (!serviceConnected) {
             OutlinedButton(onClick = onOpenAccessibilitySettings) { Text("打开无障碍设置") }
         }
         OutlinedButton(onClick = onOpenSystemSettings) { Text("打开系统设置以产生测试事件") }

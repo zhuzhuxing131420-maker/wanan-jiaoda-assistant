@@ -52,12 +52,10 @@ fun PermissionGuideScreen(state: PermissionState?, firstRun: Boolean, onNotifica
             else -> "待开启"
         }, state == null, state?.notificationsGranted == true || state?.notificationsRequired == false,
             "查看设置", onNotificationSettings)
-        PermissionRow("无障碍服务", when (state?.accessibilityEnabled) {
-            true -> "已开启"
-            false -> "待开启"
-            null -> "正在检查"
-        }, state == null, state?.accessibilityEnabled == true,
-            if (state?.accessibilityEnabled == true) null else "去开启", onAccessibilitySettings)
+        PermissionRow("无障碍服务", state?.accessibilityStatusText ?: "正在检查",
+            state == null, state?.accessibilityConnected == true,
+            "查看设置", onAccessibilitySettings,
+            suggested = state?.accessibilityEnabled != false)
         PermissionRow("电池优化", when (state?.ignoringBatteryOptimizations) {
             true -> "已忽略电池优化"
             false -> "建议关闭限制"
