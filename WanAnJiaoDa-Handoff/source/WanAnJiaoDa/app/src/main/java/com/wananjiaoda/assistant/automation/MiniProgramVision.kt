@@ -125,6 +125,10 @@ class MiniProgramVision(
                         .put("screenWidth", width).put("screenHeight", height).put("sessionId", session)
                         .put("windowId", windowId).put("captureMetrics", metrics.snapshot())
                         .put("maximumInputSide", maximumSide)
+                        .put("navigationCandidateLabels", JSONArray((if (WeChatNavigationTest.running)
+                            NavigationLabelDiagnostics.candidates(lines, height) else emptyList()).map { line ->
+                            JSONObject().put("text", line.text).put("bounds", boundsJson(line.bounds))
+                        }))
                         .put("navigationLabelHints", JSONArray(if (WeChatNavigationTest.running) lines.mapNotNull { line ->
                             val normalized = ScreenTextResolver.normalize(line.text)
                             val known = listOf("小程序", "朋友圈", "最近使用").firstOrNull {

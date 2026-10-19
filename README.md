@@ -4,7 +4,7 @@
 
 **当前为 Preview 预览版。** 部分流程已在真机验证，长期后台运行、不同厂商设备和真实定时提交仍需继续测试。
 
-[下载 Preview](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.2) · [全部发布版本](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases) · [反馈问题](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/issues)
+[下载 Preview](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.3) · [全部发布版本](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases) · [反馈问题](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/issues)
 
 ## 设计初衷与使用边界
 
@@ -24,12 +24,12 @@
 
 ## 下载与使用
 
-在 [Preview 发布页](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.2) 展开 **Assets**，下载 `WanAnJiaoDa-v0.1.0-preview.2-arm64-debug.apk`。同页提供 `SHA256SUMS.txt` 和 `build-manifest.json`，用于核对下载文件、源码提交和构建信息。
+在 [Preview 发布页](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.3) 展开 **Assets**，下载 `WanAnJiaoDa-v0.1.0-preview.3-arm64-debug.apk`。同页提供 `SHA256SUMS.txt` 和 `build-manifest.json`，用于核对下载文件、源码提交和构建信息。
 
 | 项目 | 当前 Preview |
 | --- | --- |
-| 应用版本 | `0.1.0-preview.2`，`versionCode 2` |
-| 发布标签 | `v0.1.0-preview.2` |
+| 应用版本 | `0.1.0-preview.3`，`versionCode 3` |
+| 发布标签 | `v0.1.0-preview.3` |
 | 安装要求 | Android 10 / API 29 及以上，`arm64-v8a` |
 | 视觉识别流程 | 需要 Android 11 / API 30 及以上；Android 10 仅保留节点观察等支持的功能 |
 | 构建类型 | Debug 签名测试包 |
@@ -44,6 +44,10 @@
 已有同包名应用的签名若不同，可能无法直接更新。保留现有数据并评估迁移后再处理安装问题，避免直接卸载造成记录丢失。请在本人授权的账号及允许的使用场景下使用本工具。
 
 ## 当前验证与限制
+
+`preview.3` 修复导航超过 90 秒仍未停止的问题，以及 iQOO 设备上“最近使用”被 OCR 识别为“最近使便用”导致入口停滞的问题。只兼容该已观察到的入口文字差异，仍要求确认完整目标名称、连续两帧和同一窗口，不以截断名称或固定坐标选择目标。
+
+本次 **135 项单元测试通过**，同一证书的 v1/v2/v3 签名、APK 完整性和对齐检查通过。在 iQOO Neo9 Pro（Android 16 / OriginOS 6、微信 8.0.78）上覆盖升级保留数据，已验证仅导航自动到达目标签到页，未提交签到；超时停止也已真机验证。真实定时提交和其他设备不属于本轮验证范围。新增诊断只在本机保存已知导航页面的少量候选入口标签，不上传页面或设备原始记录。
 
 `preview.2` 将已验证的兼容签名方案纳入 Gradle 构建配置，启用 v1/v2/v3 签名并保留同一调试证书。应用版本号递增为 2，独立发布；`preview.1` 和原有测试附件保留历史。用户已反馈同证书、同代码的兼容签名测试包在 iQOO Neo9 Pro 上安装成功；这不代表 `preview.2` 的全部真机流程或所有设备均已验证。
 

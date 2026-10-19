@@ -22,10 +22,10 @@
 
 **Interfaces:** 接收 CoroutineScope、等待毫秒与普通无接收者回调，返回 Job。调用方通过取消旧 Job 防止旧会话停止新会话。
 
-- [ ] 写回归测试，使用 runBlocking、CompletableDeferred 和 withTimeout 断言短期限后回调触发、取消后不触发。
-- [ ] 运行测试确认缺失实现失败；实现 `scope.launch { delay(timeoutMillis); onTimeout() }`。
-- [ ] 协调器用显式 `WeChatNavigationTest.cancel(...)` 回调，检查全部取消入口。
-- [ ] 运行目标测试与全部单元测试并保存结果。
+- [x] 写回归测试，使用 runBlocking、CompletableDeferred 和 withTimeout 断言短期限后回调触发、取消后不触发。
+- [x] 运行测试确认缺失实现失败；实现 `scope.launch { delay(timeoutMillis); onTimeout() }`。
+- [x] 协调器用显式 `WeChatNavigationTest.cancel(...)` 回调，检查全部取消入口。
+- [x] 运行目标测试与全部单元测试并保存结果。
 
 ### Task 2: 本机入口诊断与实测修复
 
@@ -33,16 +33,25 @@
 
 **Interfaces:** 输入 `List<ScreenTextLine>`，输出仅“最近”“晚安”前缀的短候选标签与边界。诊断只落本机文件；不改变点击授权。
 
-- [ ] 先测试候选范围，姓名、学号、聊天正文、长标签不进入诊断。
-- [ ] 将诊断接到已有 navigation JSON 字段，构建唯一诊断目录，验证签名后覆盖安装已授权手机。
-- [ ] 仅导航测试，收集实际候选后补精确入口回归测试，再实现最小修复。不得在证据不足时扩大自动点击条件。
-- [ ] 验证重复名称、不完整名称和其他窗口仍拒绝操作；确认导航进入目标页但不提交。
+- [x] 先测试候选范围，姓名、学号、聊天正文、长标签不进入诊断。
+- [x] 将诊断接到已有 navigation JSON 字段，构建唯一诊断目录，验证签名后覆盖安装已授权手机。
+- [x] 仅导航测试，收集实际候选后补精确入口回归测试，再实现最小修复。不得在证据不足时扩大自动点击条件。
+- [x] 验证重复名称、不完整名称和其他窗口仍拒绝操作；确认导航进入目标页但不提交。
 
 ### Task 3: 交付
 
 **Files:** app/build.gradle.kts、README.md。
 
-- [ ] 将版本设为 3 / 0.1.0-preview.3，记录实测范围和限制。
-- [ ] 在唯一输出目录执行 `gradlew.bat testDebugUnitTest assembleDebug --console=plain`；Junction 目标已核对，不运行外部覆盖脚本。
-- [ ] 验证 APK 结构、对齐、版本和原证书下的 v1/v2/v3；最终真机仅导航。
+- [x] 将版本设为 3 / 0.1.0-preview.3，记录实测范围和限制。
+- [x] 在唯一输出目录执行 `gradlew.bat testDebugUnitTest assembleDebug --console=plain`；Junction 目标已核对，不运行外部覆盖脚本。
+- [x] 验证 APK 结构、对齐、版本和原证书下的 v1/v2/v3；最终真机仅导航。
 - [ ] 审核明确路径、提交中文版本；审查将发布的全部变更和附件后同步独立 Preview，保留旧版本。
+
+## 本轮执行证据
+
+- 超时旧实现运行时回归 3 项中 2 项失败；修复后 3 项通过。真机超时回执 90.01 秒，submissionEnabled=false。
+- 入口别名新增回归在旧实现下 2 项失败；修复后目标套件 26 项全部通过。最终全套 135 项通过。
+- 受限候选诊断确认最近使便用误识别；只增加该精确别名。
+- 最终 APK 覆盖升级后连续两次仅导航到达目标页，回执 page_reached、targetSelectionCompleted=true、submissionEnabled=false。第一轮包含 RECENT 和 TARGET 动作。
+- 原证书一致，v1/v2/v3 分别验证通过，ZIP CRC 与16KiB对齐通过。构建输出位于仓库外唯一目录，旧诊断APK已复制并核对SHA256。
+- 超时和入口改动各自已独立审查通过；发布前进行整体审查。
