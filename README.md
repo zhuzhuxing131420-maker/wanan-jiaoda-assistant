@@ -93,13 +93,20 @@ Set-Location D:\Projects\WanAnJiaoDa\WanAnJiaoDa-Handoff\source\WanAnJiaoDa
 
 反馈时建议提供应用版本、设备型号、Android / 微信版本、复现步骤和经过脱敏的错误信息。不要上传账号密码、Token、私人配置、完整页面记录或包含姓名、学号等信息的截图。
 
+## 来源与贡献者
+
+- **[mcxianyujun（mc咸鱼君）](https://github.com/mcxianyujun)**：提供本项目最初交接包的源码，并提供来自 Maintune 的美术素材。感谢其对本项目的支持。
+- **[zhuzhuxing](https://github.com/zhuzhuxing131420-maker)**：在交接源码基础上继续维护，进行设备适配、问题修复、版本管理与发布。
+
+根据维护者确认，原始交接源码已获得 mcxianyujun 允许公开并采用 GPL-3.0 的明确授权。本仓库的代码许可采用下述 GPL-3.0-only；美术素材仍按其独立许可使用。此处记录源码提供与后续维护的贡献，不将原始源码归为维护者独立创作，也不改写已有 Git 提交的作者信息。
+
 ## 许可证与美术素材
 
 本项目采用**分项授权**：
 
 | 内容 | 授权 |
 | --- | --- |
-| 本项目自行编写的程序代码 | **GNU GPL v3.0 only**，SPDX：`GPL-3.0-only`，见 [LICENSE](LICENSE) |
+| 经授权的原始交接源码及本项目后续代码修改 | **GNU GPL v3.0 only**，SPDX：`GPL-3.0-only`，见 [LICENSE](LICENSE) |
 | 来自 Maintune 的美术素材及本项目对该素材的美术改编 | **CC BY-NC-SA 4.0**，见[美术素材署名与授权](ARTWORK-NOTICE.md)及[许可全文](LICENSES/CC-BY-NC-SA-4.0.txt) |
 | 第三方库、SDK 与工具 | 保留其各自的许可证和版权声明 |
 
@@ -109,4 +116,4 @@ Set-Location D:\Projects\WanAnJiaoDa\WanAnJiaoDa-Handoff\source\WanAnJiaoDa
 
 **素材不因放入本仓库而改为 GPL 授权，也不是 GPL 与 CC 的任选双重许可。** 包含该素材的 APK 不能仅凭代码的 GPL 标识视为整体可商用或可仅按 GPL 再分发；再分发时应核对各部分授权。需要商业使用或仅包含 GPL 兼容内容的发行版时，应先替换相应素材或取得所需的额外授权。
 
-Copyright (C) 2026 zhuzhuxing，限本项目自有代码；第三方素材版权归各自权利人所有。
+原始交接源码的相关权利归 mcxianyujun 及相应权利人；Copyright (C) 2026 zhuzhuxing 仅适用于其后续贡献。第三方素材及依赖的权利归各自权利人所有。
