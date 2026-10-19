@@ -6,6 +6,14 @@
 
 [下载 Preview](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.2) · [全部发布版本](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases) · [反馈问题](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/issues)
 
+## 设计初衷与使用边界
+
+本项目希望帮助同学减少每天记忆签到时间、重复打开页面的负担，在**真实满足签到条件、遵守学校与平台规定**的前提下，辅助完成日常签到，让大家少一件需要反复惦记的小事。
+
+本项目**不提供虚拟定位、伪造位置、伪造签到数据或绕过签到校验的功能**，不用于代签、冒用他人身份或其他不诚信行为。请仅使用本人账号，并如实满足实际到场、地点、时间等签到要求；自动化辅助不会改变这些要求。
+
+是否允许使用自动化辅助，应以学校及平台的实际规定为准；如相关规定不允许，请勿使用本工具。请以诚信为前提使用技术，尊重学校管理和平台规则。
+
 ## 功能
 
 - **页面导航**：从微信进入发现、小程序、最近使用和目标签到页，核对完整目标名称，支持有限的入口恢复。
