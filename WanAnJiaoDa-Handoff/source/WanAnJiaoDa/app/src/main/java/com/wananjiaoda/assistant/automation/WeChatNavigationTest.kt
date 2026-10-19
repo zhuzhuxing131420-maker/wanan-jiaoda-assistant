@@ -68,7 +68,10 @@ object WeChatNavigationTest {
         _state.value = NavigationUiState(true, "正在打开微信")
         WeChatObserver.start()
         session = WeChatObserver.sessionId
-        timeout = scope.launch { delay(90000); cancel("自动导航超过90秒，已停止") }
+        timeout?.cancel()
+        timeout = navigationTimeout(scope, 90000) {
+            WeChatNavigationTest.cancel("自动导航超过90秒，已停止")
+        }
         try {
             launchMethod = requestLaunch(owner) { ownerLaunchError = "${it.javaClass.simpleName}: ${it.message.orEmpty().take(240)}" }
         } catch (error: Exception) { cancel("无法打开微信：${error.javaClass.simpleName}") }
