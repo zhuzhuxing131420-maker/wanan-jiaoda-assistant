@@ -48,4 +48,3 @@ class ConnectionProtectionPolicyTest {
         assertEquals("连接保护已关闭", state.message)
     }
 }
-

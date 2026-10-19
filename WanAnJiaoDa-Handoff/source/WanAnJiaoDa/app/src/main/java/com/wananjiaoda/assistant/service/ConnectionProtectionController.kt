@@ -83,4 +83,3 @@ object ConnectionProtectionController {
             AccessibilityEventLogger.connected.value, failure)
     }
 }
-

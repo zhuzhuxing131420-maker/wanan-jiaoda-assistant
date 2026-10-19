@@ -26,6 +26,7 @@ import com.wananjiaoda.assistant.ui.component.AppBottomBar
 import com.wananjiaoda.assistant.ui.screen.HistoryScreen
 import com.wananjiaoda.assistant.ui.screen.HomeScreen
 import com.wananjiaoda.assistant.ui.screen.SettingsScreen
+import com.wananjiaoda.assistant.service.ConnectionProtectionController
 import com.wananjiaoda.assistant.ui.screen.PermissionGuideScreen
 import com.wananjiaoda.assistant.ui.screen.AccessibilityTestScreen
 import com.wananjiaoda.assistant.ui.screen.WeChatObserverScreen
@@ -92,6 +93,7 @@ fun AppNavigation(modifier: Modifier = Modifier) {
                 RefreshPermissionStateOnResume(permissionViewModel)
                 val vm: SettingsViewModel = viewModel()
                 val settings by vm.settings.collectAsStateWithLifecycle()
+                val protection by ConnectionProtectionController.state.collectAsStateWithLifecycle()
                 val nextTaskText by vm.nextTaskText.collectAsStateWithLifecycle()
                 val exactAlarmAllowed by vm.exactAlarmAllowed.collectAsStateWithLifecycle()
                 LifecycleResumeEffect(vm) {
@@ -108,7 +110,9 @@ fun AppNavigation(modifier: Modifier = Modifier) {
                     accessibilityEnabled = permissions?.accessibilityEnabled,
                     accessibilityConnected = permissions?.accessibilityConnected == true,
                     onAccessibilityTest = { navController.navigate(AppDestination.ACCESSIBILITY_TEST.route) },
-                    onWeChatObserver = { navController.navigate(AppDestination.WECHAT_OBSERVER.route) })
+                    onWeChatObserver = { navController.navigate(AppDestination.WECHAT_OBSERVER.route) },
+                    connectionProtection = protection,
+                    onConnectionProtectionChange = { ConnectionProtectionController.setEnabled(context, it) })
             }
             composable(AppDestination.HISTORY.route) {
                 val vm: HistoryViewModel = viewModel()

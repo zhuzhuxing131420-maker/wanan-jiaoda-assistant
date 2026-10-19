@@ -56,7 +56,7 @@ fun PermissionGuideScreen(state: PermissionState?, firstRun: Boolean, onNotifica
             state == null, state?.accessibilityConnected == true,
             "查看设置", onAccessibilitySettings,
             suggested = state?.accessibilityEnabled != false)
-        PermissionRow("电池优化", when (state?.ignoringBatteryOptimizations) {
+        PermissionRow("Android 电池优化", when (state?.ignoringBatteryOptimizations) {
             true -> "已忽略电池优化"
             false -> "建议关闭限制"
             null -> "正在检查"
@@ -67,7 +67,7 @@ fun PermissionGuideScreen(state: PermissionState?, firstRun: Boolean, onNotifica
         Button(onClick = onContinue, modifier = Modifier.fillMaxWidth()) { Text(if (firstRun) "进入应用" else "返回设置") }
     }
     if (showAutoStartInfo) AlertDialog(onDismissRequest = { showAutoStartInfo = false }, title = { Text("自启动说明") },
-        text = { Text("不同设备的入口不同。可在系统设置中查找“自启动”“应用启动”或“后台运行”，按需允许晚安交大助手。") },
+        text = { Text("不同设备的入口不同。请检查“自启动”“关联启动”及“后台运行”。部分 vivo／iQOO 设备还需在应用信息 → 电量 → 后台耗电管理中选择“允许后台耗电”。若“关联启动”列出助手自身或 Android 定时任务，需要允许相应启动。Android 电池优化白名单不能代表这些厂商设置已放行，允许后台运行可能增加耗电。") },
         confirmButton = { TextButton(onClick = { showAutoStartInfo = false }) { Text("知道了") } })
 }
 

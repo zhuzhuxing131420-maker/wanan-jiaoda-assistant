@@ -9,6 +9,7 @@
 
 # Android generated output and machine-specific configuration
 **/.gradle/
+**/.kotlin/
 **/build/
 **/.idea/
 **/local.properties

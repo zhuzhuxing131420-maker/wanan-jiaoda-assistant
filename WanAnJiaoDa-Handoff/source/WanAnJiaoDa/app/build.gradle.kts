@@ -13,8 +13,8 @@ android {
         applicationId = "com.wananjiaoda.assistant"
         minSdk = 29
         targetSdk = 35
-        versionCode = 3
-        versionName = "0.1.0-preview.3"
+        versionCode = 4
+        versionName = "0.1.0-preview.4"
     }
     buildFeatures { compose = true }
     signingConfigs {

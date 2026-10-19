@@ -28,6 +28,12 @@ import com.wananjiaoda.assistant.ui.viewmodel.HomeUiState
 fun HomeScreen(state: HomeUiState, permissionState: PermissionState? = null, onPermissionGuide: () -> Unit = {}, modifier: Modifier = Modifier,
     onTestCheckIn: () -> Unit = {}) {
     val needsAttention = permissionState?.let { (it.notificationsRequired && !it.notificationsGranted) || !it.accessibilityConnected } == true
+    val attentionText = permissionState?.let {
+        buildList {
+            if (!it.accessibilityConnected) add("无障碍：${it.accessibilityStatusText}")
+            if (it.notificationsRequired && !it.notificationsGranted) add("通知权限未开启")
+        }.joinToString("；")
+    }.orEmpty()
     Column(modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         TianyiHeader()
         if (needsAttention) {
@@ -37,7 +43,7 @@ fun HomeScreen(state: HomeUiState, permissionState: PermissionState? = null, onP
                     ToolGlyph(ToolGlyphKind.PERMISSION)
                     Column(Modifier.weight(1f)) {
                         Text("部分配置待检查", style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.SemiBold)
-                        Text(permissionState.accessibilityStatusText, style = MaterialTheme.typography.bodySmall)
+                        Text(attentionText, style = MaterialTheme.typography.bodySmall)
                     }
                     Text("›", style = MaterialTheme.typography.titleLarge)
                 }

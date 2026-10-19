@@ -4,7 +4,7 @@
 
 **当前为 Preview 预览版。** 部分流程已在真机验证，长期后台运行、不同厂商设备和真实定时提交仍需继续测试。
 
-[下载 Preview](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.3) · [全部发布版本](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases) · [反馈问题](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/issues)
+[下载 Preview](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.4) · [全部发布版本](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases) · [反馈问题](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/issues)
 
 ## 设计初衷与使用边界
 
@@ -24,12 +24,12 @@
 
 ## 下载与使用
 
-在 [Preview 发布页](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.3) 展开 **Assets**，下载 `WanAnJiaoDa-v0.1.0-preview.3-arm64-debug.apk`。同页提供 `SHA256SUMS.txt` 和 `build-manifest.json`，用于核对下载文件、源码提交和构建信息。
+在 [Preview 发布页](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.4) 展开 **Assets**，下载 `WanAnJiaoDa-v0.1.0-preview.4-arm64-debug.apk`。同页提供 `SHA256SUMS.txt` 和 `build-manifest.json`，用于核对下载文件、源码提交和构建信息。
 
 | 项目 | 当前 Preview |
 | --- | --- |
-| 应用版本 | `0.1.0-preview.3`，`versionCode 3` |
-| 发布标签 | `v0.1.0-preview.3` |
+| 应用版本 | `0.1.0-preview.4`，`versionCode 4` |
+| 发布标签 | `v0.1.0-preview.4` |
 | 安装要求 | Android 10 / API 29 及以上，`arm64-v8a` |
 | 视觉识别流程 | 需要 Android 11 / API 30 及以上；Android 10 仅保留节点观察等支持的功能 |
 | 构建类型 | Debug 签名测试包 |
@@ -44,6 +44,15 @@
 已有同包名应用的签名若不同，可能无法直接更新。保留现有数据并评估迁移后再处理安装问题，避免直接卸载造成记录丢失。请在本人授权的账号及允许的使用场景下使用本工具。
 
 ## 当前验证与限制
+
+`preview.4` 增加用户可控的“保持服务连接”前台保护，使用低打扰常驻通知降低后台清理导致的断连风险。配置检查、首页与设置分别显示无障碍“未授权”“已授权未连接”“已连接”，读取失败显示“状态未知”。连接保护运行不等于无障碍已连接，通知会如实提示。
+
+升级后在设置中主动开启“保持服务连接”。关闭开关或通知中的停止入口会保存关闭状态；普通进程回收后由系统尝试恢复已开启的保护，返回应用时也会检查。空闲保护不读取屏幕，不使用唤醒锁或循环唤醒。系统强制停止、撤回授权和厂商强制清理仍可能需要人工恢复，不能保证后台永不终止。
+
+在部分 vivo／iQOO 设备上，还需检查系统应用信息 → 电量 → 后台耗电管理，选择“允许后台耗电”，并核对自启动和关联启动设置。若关联启动列表含助手自身或 Android 定时任务，需要允许相应启动。Android 电池优化白名单与厂商后台策略是两项设置；前者已放行不代表后者已放行。这些设置可能增加后台耗电。
+
+本轮 **148 项单元测试通过**。iQOO Neo9 Pro（Android 16 / OriginOS 6）开启保护并放行厂商后台、关联启动后，在后台空闲状态受控结束进程，15 秒检查时保护和无障碍均已由系统恢复，无需重新打开助手或开关授权；关闭保护后返回应用也保持关闭。恢复后仅导航到达目标签到页，未提交签到。此结果不代表系统强制停止、手机重启或其他厂商策略均能自动恢复，长期后台仍需继续观察。
+
 
 `preview.3` 修复导航超过 90 秒仍未停止的问题，以及 iQOO 设备上“最近使用”被 OCR 识别为“最近使便用”导致入口停滞的问题。只兼容该已观察到的入口文字差异，仍要求确认完整目标名称、连续两帧和同一窗口，不以截断名称或固定坐标选择目标。
 

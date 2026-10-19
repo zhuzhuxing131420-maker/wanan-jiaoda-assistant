@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import com.wananjiaoda.assistant.domain.model.CheckInMode
 import com.wananjiaoda.assistant.domain.model.CheckInSettings
 import com.wananjiaoda.assistant.ui.component.AutomationServiceCard
+import com.wananjiaoda.assistant.ui.component.ConnectionProtectionCard
+import com.wananjiaoda.assistant.service.ConnectionProtectionState
 import com.wananjiaoda.assistant.ui.component.SchedulerSettingCard
 import com.wananjiaoda.assistant.ui.component.SettingCard
 import com.wananjiaoda.assistant.ui.component.ToolGlyph
@@ -46,6 +48,8 @@ fun SettingsScreen(
     accessibilityConnected: Boolean,
     onAccessibilityTest: () -> Unit,
     onWeChatObserver: () -> Unit,
+    connectionProtection: ConnectionProtectionState,
+    onConnectionProtectionChange: (Boolean) -> Unit,
 ) {
     val context = LocalContext.current
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 16.dp),
@@ -57,6 +61,7 @@ fun SettingsScreen(
                 Text("偏好设置保存在本机", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
+        ConnectionProtectionCard(connectionProtection, onConnectionProtectionChange)
         SettingCard("签到时间") {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 Column {

@@ -107,4 +107,3 @@ class ConnectionProtectionService : Service() {
         private const val ACTION_STOP = "com.wananjiaoda.assistant.STOP_CONNECTION_PROTECTION"
     }
 }
-
