@@ -13,10 +13,18 @@ android {
         applicationId = "com.wananjiaoda.assistant"
         minSdk = 29
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.1.0-preview.2"
     }
     buildFeatures { compose = true }
+    signingConfigs {
+        getByName("debug") {
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
+            enableV4Signing = false
+        }
+    }
     buildTypes {
         getByName("debug") {
             ndk { abiFilters.add("arm64-v8a") }

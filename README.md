@@ -4,7 +4,7 @@
 
 **当前为 Preview 预览版。** 部分流程已在真机验证，长期后台运行、不同厂商设备和真实定时提交仍需继续测试。
 
-[下载 Preview](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.1) · [全部发布版本](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases) · [反馈问题](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/issues)
+[下载 Preview](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.2) · [全部发布版本](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases) · [反馈问题](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/issues)
 
 ## 功能
 
@@ -16,12 +16,12 @@
 
 ## 下载与使用
 
-在 [Preview 发布页](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.1) 展开 **Assets**，下载 `WanAnJiaoDa-v0.1.0-preview.1-arm64-debug.apk`。同页提供 `SHA256SUMS.txt` 和 `build-manifest.json`，用于核对下载文件、源码提交和构建信息。
+在 [Preview 发布页](https://github.com/zhuzhuxing131420-maker/wanan-jiaoda-assistant/releases/tag/v0.1.0-preview.2) 展开 **Assets**，下载 `WanAnJiaoDa-v0.1.0-preview.2-arm64-debug.apk`。同页提供 `SHA256SUMS.txt` 和 `build-manifest.json`，用于核对下载文件、源码提交和构建信息。
 
 | 项目 | 当前 Preview |
 | --- | --- |
-| 应用版本 | `0.1.0`，`versionCode 1` |
-| 发布标签 | `v0.1.0-preview.1` |
+| 应用版本 | `0.1.0-preview.2`，`versionCode 2` |
+| 发布标签 | `v0.1.0-preview.2` |
 | 安装要求 | Android 10 / API 29 及以上，`arm64-v8a` |
 | 视觉识别流程 | 需要 Android 11 / API 30 及以上；Android 10 仅保留节点观察等支持的功能 |
 | 构建类型 | Debug 签名测试包 |
@@ -36,6 +36,10 @@
 已有同包名应用的签名若不同，可能无法直接更新。保留现有数据并评估迁移后再处理安装问题，避免直接卸载造成记录丢失。请在本人授权的账号及允许的使用场景下使用本工具。
 
 ## 当前验证与限制
+
+`preview.2` 将已验证的兼容签名方案纳入 Gradle 构建配置，启用 v1/v2/v3 签名并保留同一调试证书。应用版本号递增为 2，独立发布；`preview.1` 和原有测试附件保留历史。用户已反馈同证书、同代码的兼容签名测试包在 iQOO Neo9 Pro 上安装成功；这不代表 `preview.2` 的全部真机流程或所有设备均已验证。
+
+本次 `preview.2` 在独立目录完成 45 项 Gradle 任务，**126 项单元测试通过**，v1/v2/v3 签名、原证书一致性、版本元数据和 APK 对齐检查通过。具体构建提交和文件校验值见发布页的 `build-manifest.json`。
 
 `v0.1.0-preview.1` 从提交 `8cee209a0a54c8a52b6d4d21147968a93c5cba36` 在独立目录构建：**126 项单元测试通过**，45 项 Gradle 任务实际执行，APK 签名和文件校验通过。此结果对应该次发布，不代表未来每次修改都已验证。
 
