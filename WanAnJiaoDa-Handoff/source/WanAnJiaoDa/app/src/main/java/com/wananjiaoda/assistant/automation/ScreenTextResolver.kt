@@ -5,7 +5,12 @@ import kotlin.math.abs
 
 object ScreenTextResolver {
     fun normalize(text: String): String = Normalizer.normalize(text, Normalizer.Form.NFKC)
-        .replace(Regex("\\s+"), "").let { if (it == "最近便用") "最近使用" else it }
+        .replace(Regex("\\s+"), "").let {
+            when (it) {
+                "最近便用", "最近使便用" -> "最近使用"
+                else -> it
+            }
+        }
 
     fun unique(lines: List<ScreenTextLine>, expected: String,
         region: (ScreenBounds) -> Boolean = { true }): ScreenTextLine? {

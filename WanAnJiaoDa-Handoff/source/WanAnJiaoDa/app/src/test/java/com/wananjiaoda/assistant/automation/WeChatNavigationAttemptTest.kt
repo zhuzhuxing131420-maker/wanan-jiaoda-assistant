@@ -99,6 +99,26 @@ class WeChatNavigationAttemptTest {
         assertEquals(NavigationAction.TARGET, stable(WeChatNavigationAttempt(), "最近便用", "晚安交大地学人")?.action)
         assertNull(stable(WeChatNavigationAttempt(), "最近便用", "晚安交大地学…"))
     }
+    @Test fun observedRecentHeaderExtraCharacterOpensRecentList() {
+        assertEquals(NavigationAction.RECENT,
+            stable(WeChatNavigationAttempt(), "小程序", "最近使便用")?.action)
+    }
+    @Test fun observedRecentHeaderExtraCharacterAllowsOnlyExactTargetName() {
+        assertEquals(NavigationAction.TARGET,
+            stable(WeChatNavigationAttempt(), "最近使便用", "晚安交大地学人")?.action)
+        for (label in listOf("晚安交大地学…", "晚安交大地学入")) {
+            assertNull(stable(WeChatNavigationAttempt(), "最近使便用", label))
+        }
+    }
+    @Test fun recentHeaderAliasDoesNotBroadenChatOrPartialLabels() {
+        for (header in listOf("聊天中最近使便用", "最近使便", "最近使便用的聊天")) {
+            val action = stable(WeChatNavigationAttempt(), header, "晚安交大地学人")?.action
+            assertNotEquals(NavigationAction.RECENT, action)
+            assertNotEquals(NavigationAction.TARGET, action)
+        }
+        assertNotEquals(NavigationAction.TARGET,
+            stable(WeChatNavigationAttempt(), "最近使便用", "聊天中的晚安交大地学人")?.action)
+    }
     @Test fun outsideTimeReachesPageWithoutStartingASubmission() {
         val attempt = WeChatNavigationAttempt()
         select(attempt)
